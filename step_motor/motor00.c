@@ -58,17 +58,18 @@ int main(void)
 {	
 	initialize();
 	if(wiringPiSetup() == -1) return 1;
-	digitalWrite(A,1);
-	delay(1000);
-	digitalWrite(A,0);
-	delay(1000);
-	/*while(1)
+	while(1)
 	{
-		if(digitalRead(SW) == 0)
+		/*if(digitalRead(SW) == 0)
 			iris_open();
 		else
 			iris_close();
-	}*/
+		*/
+		digitalWrite(A,1);
+		delay(1000);
+		digitalWrite(A,0);
+		delay(1000);
+	}
 
 	return 0;
 }
