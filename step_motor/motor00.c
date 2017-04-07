@@ -16,11 +16,11 @@ void iris_close(void);
 
 void initialize(void)
 {
-	pinMode(22,OUTPUT);
-	pinMode(23,OUTPUT);
-	pinMode(24,OUTPUT);
-	pinMode(25,OUTPUT);
-	pinMode(21,INPUT);	
+	pinMode(A,OUTPUT);
+	pinMode(AA,OUTPUT);
+	pinMode(B,OUTPUT);
+	pinMode(BB,OUTPUT);
+	pinMode(SW,INPUT);	
 }
 
 void iris_control(int a, int b, int c, int d)
