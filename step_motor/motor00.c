@@ -56,8 +56,9 @@ void iris_close(void)
 }
 int main(void)
 {	
+	if(wiringPiSetup() == -1) 	
+		return 1;
 	initialize();
-	if(wiringPiSetup() == -1) return 1;
 	while(1)
 	{
 		/*if(digitalRead(SW) == 0)
@@ -69,6 +70,7 @@ int main(void)
 		delay(1000);
 		digitalWrite(A,0);
 		delay(1000);
+		printf("success\n");
 	}
 
 	return 0;
