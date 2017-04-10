@@ -81,9 +81,14 @@ int main(void)
 	if(wiringPiSetup() == -1) 	
 		return 1;
 	initialize();
+	
+	wiringPiISR(29, INT_EDGE_FALLING,&iris_open);
+	wiringPiISR(30, INT_EDGE_FALLING,&iris_close);
+
 	while(1)
 	{
-		if(digitalRead(SW) == 1)
+		
+		/*if(digitalRead(SW) == 1)
 		{
 		        printf("open\n");
 			iris_open();
@@ -92,7 +97,7 @@ int main(void)
 		{
 		        printf("close\n");
 			iris_close();
-		}
+		}*/
 	}
 
 	return 0;
