@@ -61,16 +61,14 @@ int main(void)
 	initialize();
 	while(1)
 	{
-		/*if(digitalRead(SW) == 0)
+		if(digitalRead(SW) == 1)
+		{
 			iris_open();
+		        printf("success\n");
+		}
 		else
 			iris_close();
-		*/
-		iris_open();
-		delay(1000);
-		iris_close();
-		delay(1000);
-		printf("success\n");
+
 	}
 
 	return 0;
