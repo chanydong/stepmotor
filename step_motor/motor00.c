@@ -66,9 +66,9 @@ int main(void)
 		else
 			iris_close();
 		*/
-		digitalWrite(A,1);
+		iris_open();
 		delay(1000);
-		digitalWrite(A,0);
+		iris_close();
 		delay(1000);
 		printf("success\n");
 	}
