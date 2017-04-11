@@ -12,6 +12,7 @@
 #define SW	21
 #define TIME	100
 
+int change = 0;
 ///////////////////////////FUNCTION/////////////////////////////
 void initialize(void);
 void iris_reset(int a, int b, int c, int d, int e, int f);
@@ -76,19 +77,28 @@ void iris_close(void)
 	delay(TIME);
 	iris_control(1,0,1,0);
 }
+void modeChange(void)
+{
+	if(change == 0)
+		change = 1 ;
+	else change = 0;
+}
 int main(void)
 {	
 	if(wiringPiSetup() == -1) 	
 		return 1;
 	initialize();
 	
-	wiringPiISR(29, INT_EDGE_FALLING,&iris_open);
-	wiringPiISR(30, INT_EDGE_FALLING,&iris_close);
+	wiringPiISR(30, INT_EDGE_RISING, modeChange());
+	digitalWrite(29, 1);
 
 	while(1)
 	{
+		delayMicroseconds(10);
+		digitalWrite(29,1);
+		delayMicroseconds(10);
 		
-		/*if(digitalRead(SW) == 1)
+		if(change == 0)
 		{
 		        printf("open\n");
 			iris_open();
@@ -97,7 +107,7 @@ int main(void)
 		{
 		        printf("close\n");
 			iris_close();
-		}*/
+		}
 	}
 
 	return 0;
